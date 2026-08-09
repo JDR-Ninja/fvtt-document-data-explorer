@@ -1,0 +1,98 @@
+{
+  "DDE": {
+    "HeaderButton": "Explorateur de données",
+    "WindowTitle": "Explorateur de données : {name}",
+    "ReadOnly": "Lecture seule",
+    "Empty": "Ce document ne contient aucune donnée.",
+    "NoMatch": "Aucune propriété ne correspond au filtre.",
+    "NoChanges": "Aucune modification en attente",
+    "PendingChanges": "{count} modification(s) en attente",
+    "DerivedHint": "Valeur après préparation des données, recalculée à l'application.",
+
+    "Review": {
+      "Removed": "(supprimé)"
+    },
+
+    "Reference": {
+      "Open": "Ouvrir {name} dans son propre explorateur",
+      "Broken": "Référence cassée : {uuid} ne résout vers rien"
+    },
+
+    "Mode": {
+      "Source": "Source",
+      "SourceHint": "Données enregistrées, telles qu'elles existent en base. Modifiables.",
+      "Derived": "Dérivé",
+      "DerivedHint": "Données vivantes après préparation, calculs du système inclus. Lecture seule."
+    },
+
+    "Action": {
+      "Toggle": "Déplier / replier",
+      "Filter": "Filtrer par chemin ou valeur…",
+      "ExpandAll": "Tout déplier",
+      "CollapseAll": "Tout replier",
+      "ExportJson": "Télécharger les données source en JSON",
+      "CopyPath": "Copier le chemin de la propriété",
+      "CopyValue": "Copier la valeur",
+      "CopyUuid": "Copier l'UUID du document",
+      "CopyMacro": "Copier les modifications en attente sous forme de macro exécutable",
+      "Review": "Revoir les modifications en attente",
+      "HideDefaults": "Masquer les propriétés restées à leur valeur par défaut",
+      "OpenEmbedded": "Ouvrir ce document embarqué dans son propre explorateur",
+      "EditJson": "Modifier en JSON brut",
+      "AddKey": "Ajouter une propriété",
+      "DeleteKey": "Supprimer cette propriété",
+      "Revert": "Rétablir la valeur enregistrée",
+      "Discard": "Annuler",
+      "Apply": "Appliquer",
+      "Add": "Ajouter",
+      "Stage": "Préparer",
+      "Cancel": "Annuler"
+    },
+
+    "Field": {
+      "FreeForm": "Valeur libre, déclarée dans aucun schéma.",
+      "Required": "requis",
+      "Nullable": "peut être null",
+      "Readonly": "lecture seule",
+      "Integer": "entier",
+      "Positive": "positif",
+      "Range": "Intervalle : {min} → {max}",
+      "Initial": "Défaut : {value}"
+    },
+
+    "Dialog": {
+      "Add": {
+        "Title": "Ajouter une propriété",
+        "Hint": "La nouvelle propriété sera ajoutée sous {path}.",
+        "HintArray": "La nouvelle entrée sera ajoutée à la fin du tableau {path}.",
+        "Key": "Clé",
+        "Type": "Type",
+        "Value": "Valeur"
+      },
+      "Json": {
+        "Title": "Modifier en JSON",
+        "Hint": "Modification de {path}. Les objets sont fusionnés avec les données enregistrées, sauf remplacement explicite.",
+        "Replace": "Remplacer entièrement (supprimer les clés absentes de ce JSON)"
+      },
+      "Delete": {
+        "Title": "Supprimer une propriété",
+        "Content": "Supprimer <strong>{path}</strong> ? La modification est préparée et n'atteindra le document qu'à l'application."
+      }
+    },
+
+    "Notify": {
+      "Copied": "Copié : {text}",
+      "CopyFailed": "Impossible d'écrire dans le presse-papiers.",
+      "NoChanges": "Il n'y a rien à appliquer.",
+      "Applied": "{count} modification(s) appliquée(s) à {name}.",
+      "ApplyFailed": "Mise à jour refusée : {error}",
+      "InvalidValue": "Rien n'a été appliqué. {path} est invalide : {error}",
+      "ExternalUpdate": "Le document a changé ailleurs ; les modifications en attente ont été abandonnées.",
+      "ExpandTruncated": "Arrêt après {limit} branches. Ce document est trop volumineux pour être déplié entièrement.",
+      "EmbeddedMissing": "Ce document embarqué est introuvable.",
+      "KeyRequired": "Un nom de clé est requis.",
+      "KeyExists": "La clé « {key} » existe déjà à cet endroit.",
+      "InvalidJson": "JSON invalide : {error}"
+    }
+  }
+}

@@ -1,0 +1,473 @@
+/* Document Data Explorer
+ * Colours defer to Foundry's theme variables, with fallbacks so the window stays legible if a
+ * system restyles the application frame.
+ */
+
+.document-data-explorer {
+  --dde-mono: var(--font-mono, ui-monospace, "SFMono-Regular", "Consolas", monospace);
+  --dde-guide: color-mix(in srgb, currentColor 18%, transparent);
+  --dde-hover: color-mix(in srgb, currentColor 8%, transparent);
+  --dde-muted: var(--color-text-subtle, var(--color-text-secondary, #9b9b9b));
+  --dde-accent: var(--color-warm-2, #c9593f);
+  --dde-key: var(--color-text-emphatic, var(--color-text-primary, inherit));
+}
+
+.document-data-explorer .window-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.document-data-explorer .dde-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* -------------------------------------------- */
+/*  Toolbar                                     */
+/* -------------------------------------------- */
+
+.document-data-explorer .dde-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--dde-guide);
+}
+
+.document-data-explorer .dde-identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-12, 0.75rem);
+}
+
+.document-data-explorer .dde-doc-type {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dde-muted);
+}
+
+.document-data-explorer .dde-uuid {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--dde-mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.document-data-explorer .dde-uuid:hover {
+  color: var(--dde-accent);
+}
+
+.document-data-explorer .dde-lock {
+  color: var(--dde-accent);
+  font-weight: 600;
+}
+
+.document-data-explorer .dde-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.document-data-explorer .dde-mode {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--dde-guide);
+  border-radius: 4px;
+}
+
+.document-data-explorer .dde-mode-btn {
+  width: auto;
+  padding: 0.1rem 0.6rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: var(--font-size-12, 0.75rem);
+}
+
+.document-data-explorer .dde-mode-btn.active {
+  background: var(--dde-hover);
+  color: var(--dde-accent);
+  font-weight: 600;
+}
+
+.document-data-explorer .dde-search {
+  flex: 1;
+  min-width: 6rem;
+  height: 1.7rem;
+  font-size: var(--font-size-12, 0.75rem);
+}
+
+/* -------------------------------------------- */
+/*  Tree                                        */
+/* -------------------------------------------- */
+
+.document-data-explorer .dde-scroller {
+  flex: 1;
+  min-height: 0;
+  padding: 0.35rem 0.5rem;
+  overflow: auto;
+}
+
+.document-data-explorer .dde-tree,
+.document-data-explorer .dde-children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.document-data-explorer .dde-children {
+  margin-left: 0.55rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--dde-guide);
+}
+
+.document-data-explorer .dde-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1.7rem;
+  padding: 1px 3px;
+  border-left: 2px solid transparent;
+  border-radius: 3px;
+}
+
+.document-data-explorer .dde-row:hover {
+  background: var(--dde-hover);
+}
+
+.document-data-explorer .dde-spacer {
+  flex: 0 0 1.1rem;
+}
+
+.document-data-explorer .dde-toggle {
+  flex: 0 0 1.1rem;
+  transition: transform 120ms ease;
+}
+
+.document-data-explorer .dde-open > .dde-row > .dde-toggle {
+  transform: rotate(90deg);
+}
+
+.document-data-explorer .dde-key {
+  flex: 0 0 auto;
+  max-width: 14rem;
+  overflow: hidden;
+  color: var(--dde-key);
+  font-family: var(--dde-mono);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-data-explorer .dde-type {
+  flex: 0 0 auto;
+  padding: 0 0.3rem;
+  border: 1px solid var(--dde-guide);
+  border-radius: 3px;
+  color: var(--dde-muted);
+  font-size: var(--font-size-10, 0.65rem);
+  line-height: 1.4;
+  cursor: help;
+}
+
+.document-data-explorer .dde-type.dde-free {
+  border-style: dashed;
+  font-style: italic;
+}
+
+.document-data-explorer .dde-value {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.document-data-explorer .dde-preview,
+.document-data-explorer .dde-static {
+  overflow: hidden;
+  color: var(--dde-muted);
+  font-family: var(--dde-mono);
+  font-size: var(--font-size-12, 0.75rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-data-explorer .dde-input,
+.document-data-explorer .dde-input-group {
+  flex: 1;
+  min-width: 0;
+  height: 1.5rem;
+  font-family: var(--dde-mono);
+  font-size: var(--font-size-12, 0.75rem);
+}
+
+.document-data-explorer textarea.dde-input {
+  height: auto;
+  resize: vertical;
+}
+
+.document-data-explorer input[type="checkbox"].dde-input {
+  flex: 0 0 auto;
+  height: auto;
+}
+
+/* The value data preparation produced, shown beside what is stored. */
+.document-data-explorer .dde-derived {
+  flex: 0 0 auto;
+  max-width: 12rem;
+  overflow: hidden;
+  margin-left: 0.4rem;
+  opacity: 0.65;
+  color: var(--dde-muted);
+  font-family: var(--dde-mono);
+  font-size: var(--font-size-11, 0.7rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.document-data-explorer .dde-ref {
+  flex: 0 0 auto;
+  margin-left: 0.2rem;
+}
+
+.document-data-explorer .dde-ref-broken {
+  padding: 0 0.3rem;
+  color: var(--color-level-error, #d24343);
+  cursor: help;
+}
+
+.document-data-explorer .dde-error {
+  margin: 0 0 0.2rem 1.5rem;
+  color: var(--color-level-error, #d24343);
+  font-size: var(--font-size-11, 0.7rem);
+}
+
+/* -------------------------------------------- */
+/*  Row state                                   */
+/* -------------------------------------------- */
+
+.document-data-explorer .dde-dirty > .dde-row {
+  border-left-color: var(--dde-accent);
+  background: color-mix(in srgb, var(--dde-accent) 10%, transparent);
+}
+
+.document-data-explorer .dde-node:not(.dde-dirty) > .dde-row .dde-revert {
+  display: none;
+}
+
+/* Still holding whatever the schema would have put there, so nobody set this. */
+.document-data-explorer .dde-default > .dde-row .dde-key,
+.document-data-explorer .dde-default > .dde-row .dde-type {
+  opacity: 0.55;
+}
+
+.document-data-explorer .dde-mode-btn.active,
+.document-data-explorer .dde-icon.active {
+  color: var(--dde-accent);
+}
+
+.document-data-explorer .dde-icon.active {
+  background: var(--dde-hover);
+  border-color: var(--dde-guide);
+}
+
+.document-data-explorer .dde-match > .dde-row .dde-key {
+  color: var(--dde-accent);
+}
+
+.document-data-explorer .dde-invalid > .dde-row .dde-input {
+  border-color: var(--color-level-error, #d24343);
+}
+
+/* -------------------------------------------- */
+/*  Buttons                                     */
+/* -------------------------------------------- */
+
+.document-data-explorer .dde-btn {
+  flex: 0 0 auto;
+  width: auto;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid transparent;
+  background: none;
+  color: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.document-data-explorer .dde-btn:hover:not(:disabled) {
+  background: var(--dde-hover);
+  border-color: var(--dde-guide);
+}
+
+.document-data-explorer .dde-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.document-data-explorer .dde-icon {
+  width: 1.5rem;
+  padding: 0.1rem;
+  color: var(--dde-muted);
+  font-size: var(--font-size-11, 0.7rem);
+  text-align: center;
+}
+
+.document-data-explorer .dde-icon:hover:not(:disabled) {
+  color: var(--dde-key);
+}
+
+.document-data-explorer .dde-danger:hover:not(:disabled) {
+  color: var(--color-level-error, #d24343);
+}
+
+.document-data-explorer .dde-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 1px;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.document-data-explorer .dde-row:hover .dde-actions,
+.document-data-explorer .dde-actions:focus-within,
+.document-data-explorer .dde-dirty > .dde-row .dde-actions {
+  opacity: 1;
+}
+
+/* Keep the toggle caret always visible; it is not a hover-only affordance. */
+.document-data-explorer .dde-toggle {
+  opacity: 1;
+}
+
+/* -------------------------------------------- */
+/*  Footer                                      */
+/* -------------------------------------------- */
+
+/* -------------------------------------------- */
+/*  Review panel                                */
+/* -------------------------------------------- */
+
+.document-data-explorer .dde-review {
+  flex: 0 0 auto;
+  max-height: 14rem;
+  padding: 0.4rem 0.6rem;
+  overflow: auto;
+  border-top: 1px solid var(--dde-guide);
+  background: var(--dde-hover);
+}
+
+.document-data-explorer .dde-review-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--dde-mono);
+  font-size: var(--font-size-11, 0.7rem);
+}
+
+.document-data-explorer .dde-review-table td {
+  padding: 1px 0.35rem;
+  vertical-align: top;
+  border: 0;
+}
+
+/* The first three columns shrink to their content so the change reads as one line, rather than
+   being stretched apart across the panel width. */
+.document-data-explorer .dde-review-path {
+  width: 1%;
+  padding-right: 1rem;
+  color: var(--dde-key);
+  white-space: nowrap;
+}
+
+.document-data-explorer .dde-review-before {
+  width: 1%;
+  max-width: 18rem;
+  overflow: hidden;
+  color: var(--dde-muted);
+  text-decoration: line-through;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-data-explorer .dde-review-arrow {
+  width: 1rem;
+  color: var(--dde-muted);
+  text-align: center;
+}
+
+.document-data-explorer .dde-review-after {
+  max-width: 24rem;
+  overflow: hidden;
+  color: var(--dde-accent);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-data-explorer .dde-review-delete .dde-review-after {
+  color: var(--color-level-error, #d24343);
+}
+
+.document-data-explorer .dde-review .dde-empty {
+  padding: 0.4rem;
+}
+
+.document-data-explorer .dde-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-top: 1px solid var(--dde-guide);
+}
+
+.document-data-explorer .dde-status {
+  flex: 1;
+  color: var(--dde-muted);
+  font-size: var(--font-size-12, 0.75rem);
+}
+
+.document-data-explorer .dde-status.dde-has-changes {
+  color: var(--dde-accent);
+  font-weight: 600;
+}
+
+.document-data-explorer .dde-footer .dde-btn {
+  padding: 0.2rem 0.7rem;
+  border-color: var(--dde-guide);
+  border-radius: 4px;
+}
+
+.document-data-explorer .dde-empty {
+  padding: 1.5rem;
+  color: var(--dde-muted);
+  text-align: center;
+}
+
+/* -------------------------------------------- */
+/*  Dialogs                                     */
+/* -------------------------------------------- */
+
+.dde-json-dialog textarea {
+  width: 100%;
+  font-family: var(--font-mono, ui-monospace, "Consolas", monospace);
+  font-size: var(--font-size-12, 0.75rem);
+  resize: vertical;
+}
+
+.dde-json-dialog .dde-replace {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  font-size: var(--font-size-12, 0.75rem);
+}

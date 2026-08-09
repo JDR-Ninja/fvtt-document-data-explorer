@@ -1,0 +1,98 @@
+{
+  "DDE": {
+    "HeaderButton": "Data Explorer",
+    "WindowTitle": "Data Explorer: {name}",
+    "ReadOnly": "Read-only",
+    "Empty": "This document holds no data.",
+    "NoMatch": "No property matches the filter.",
+    "NoChanges": "No pending changes",
+    "PendingChanges": "{count} pending change(s)",
+    "DerivedHint": "Value after data preparation, recalculated when you apply.",
+
+    "Review": {
+      "Removed": "(removed)"
+    },
+
+    "Reference": {
+      "Open": "Open {name} in its own explorer",
+      "Broken": "Broken reference: nothing resolves for {uuid}"
+    },
+
+    "Mode": {
+      "Source": "Source",
+      "SourceHint": "Stored data, exactly as saved in the database. Editable.",
+      "Derived": "Derived",
+      "DerivedHint": "Live data after preparation, including everything the system computes. Read-only."
+    },
+
+    "Action": {
+      "Toggle": "Expand / collapse",
+      "Filter": "Filter by path or value…",
+      "ExpandAll": "Expand everything",
+      "CollapseAll": "Collapse everything",
+      "ExportJson": "Download the source data as JSON",
+      "CopyPath": "Copy the property path",
+      "CopyValue": "Copy the value",
+      "CopyUuid": "Copy the document UUID",
+      "CopyMacro": "Copy the pending changes as a runnable macro",
+      "Review": "Review the pending changes",
+      "HideDefaults": "Hide properties still at their schema default",
+      "OpenEmbedded": "Open this embedded document in its own explorer",
+      "EditJson": "Edit as raw JSON",
+      "AddKey": "Add a property",
+      "DeleteKey": "Remove this property",
+      "Revert": "Revert to the stored value",
+      "Discard": "Discard",
+      "Apply": "Apply",
+      "Add": "Add",
+      "Stage": "Stage",
+      "Cancel": "Cancel"
+    },
+
+    "Field": {
+      "FreeForm": "Free-form value, not declared in any schema.",
+      "Required": "required",
+      "Nullable": "nullable",
+      "Readonly": "read-only",
+      "Integer": "integer",
+      "Positive": "positive",
+      "Range": "Range: {min} → {max}",
+      "Initial": "Default: {value}"
+    },
+
+    "Dialog": {
+      "Add": {
+        "Title": "Add a property",
+        "Hint": "The new property is added under {path}.",
+        "HintArray": "The new entry is appended to the array {path}.",
+        "Key": "Key",
+        "Type": "Type",
+        "Value": "Value"
+      },
+      "Json": {
+        "Title": "Edit as JSON",
+        "Hint": "Editing {path}. Objects are merged into the stored data unless replacement is requested.",
+        "Replace": "Replace entirely (remove keys absent from this JSON)"
+      },
+      "Delete": {
+        "Title": "Remove a property",
+        "Content": "Remove <strong>{path}</strong>? The change is staged and only reaches the document when you apply."
+      }
+    },
+
+    "Notify": {
+      "Copied": "Copied: {text}",
+      "CopyFailed": "Could not write to the clipboard.",
+      "NoChanges": "There is nothing to apply.",
+      "Applied": "Applied {count} change(s) to {name}.",
+      "ApplyFailed": "Update refused: {error}",
+      "InvalidValue": "Nothing was applied. {path} is invalid: {error}",
+      "ExternalUpdate": "The document changed elsewhere; pending changes were discarded.",
+      "ExpandTruncated": "Stopped after {limit} branches. This document is too large to expand entirely.",
+      "EmbeddedMissing": "That embedded document could not be resolved.",
+      "KeyRequired": "A key name is required.",
+      "KeyExists": "The key \"{key}\" already exists here.",
+      "InvalidJson": "Invalid JSON: {error}"
+    }
+  }
+}
